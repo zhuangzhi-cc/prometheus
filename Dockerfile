@@ -1,6 +1,7 @@
 ARG ARCH="amd64"
 ARG OS="linux"
-FROM quay.io/prometheus/busybox-${OS}-${ARCH}:latest
+# FROM quay.io/prometheus/busybox-${OS}-${ARCH}:latest
+FROM nexus.viperbj.net/ubuntu:busybox
 LABEL maintainer="The Prometheus Authors <prometheus-developers@googlegroups.com>"
 
 ARG ARCH="amd64"
@@ -12,11 +13,11 @@ COPY console_libraries/                     /usr/share/prometheus/console_librar
 COPY consoles/                              /usr/share/prometheus/consoles/
 COPY LICENSE                                /LICENSE
 COPY NOTICE                                 /NOTICE
-COPY npm_licenses.tar.bz2                   /npm_licenses.tar.bz2
+# COPY npm_licenses.tar.bz2                   /npm_licenses.tar.bz2
 
 RUN ln -s /usr/share/prometheus/console_libraries /usr/share/prometheus/consoles/ /etc/prometheus/
 RUN mkdir -p /prometheus && \
-    chown -R nobody:nobody etc/prometheus /prometheus
+    chown -R root:root etc/prometheus /prometheus
 
 USER       nobody
 EXPOSE     9090

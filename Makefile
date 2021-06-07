@@ -14,6 +14,9 @@
 # Needs to be defined before including Makefile.common to auto-generate targets
 DOCKER_ARCHS ?= amd64 armv7 arm64 ppc64le s390x
 
+GOOS = linux
+GOARC = amd64
+
 REACT_APP_PATH = web/ui/react-app
 REACT_APP_SOURCE_FILES = $(shell find $(REACT_APP_PATH)/public/ $(REACT_APP_PATH)/src/ $(REACT_APP_PATH)/tsconfig.json)
 REACT_APP_OUTPUT_DIR = web/ui/static/react
